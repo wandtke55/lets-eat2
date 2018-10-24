@@ -2,6 +2,15 @@
   text-align: center;
 }
 
+.intro{
+  margin: 20px 200px;
+  border: dotted 2px black
+}
+
+.food-container{
+  margin: 50px 300px;
+}
+
 .nav-bar{
   width: 98%;
   padding: 20px;
@@ -15,6 +24,24 @@
 
 .nav-contact{
   margin-right: 20px;
+}
+
+.user-favorites-list{
+  border: solid 2px black
+}
+
+.addcomment-textarea{
+  height: 100px;
+  width: 500px;
+}
+
+.restaurant-img{
+  height: 200px;
+}
+
+.commentcontainer-container{
+  border: solid 2px black;
+  margin: 30px;
 }
 
 @keyframes App-logo-spin {

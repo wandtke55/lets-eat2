@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 
 class Comment extends Component {
     constructor(props) {
@@ -6,7 +7,8 @@ class Comment extends Component {
         this.state = {
             editing: false,
             titleInput: this.props.comment.title,
-            commentInput: this.props.comment.comment
+            commentInput: this.props.comment.comment,
+            comments: []
         }
     }
 
@@ -28,6 +30,17 @@ class Comment extends Component {
         })
     }
 
+    handleDeleteComment(id){
+        axios.delete(`/api/comment/${id}`).then(res => this.setState({
+            comments: res.data
+        }))
+    }
+
+    submitEdit(id, titleInput, commentInput){
+        axios.put(`/api/comment/${id}`, {titleInput, commentInput})
+        .then()
+    }
+
   
     render() {
     return (
@@ -46,8 +59,9 @@ class Comment extends Component {
             value={this.state.commentInput} 
             onChange={this.handleCommentInput}/>
         <p>{this.props.comment.comment}</p>
-        <button onClick={this.submitEdit}>Submit</button>
+        <button onClick={this.submitEdit()}>Submit</button>
         <button onClick={this.toggleEditing}>Edit</button>
+        <button onClick={()=> this.handleDeleteComment()}>Delete</button>
         <p className="commentcontainer-date">{this.props.comment.date}</p>
       </div>
     );

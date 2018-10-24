@@ -9,7 +9,6 @@ class Account extends Component{
     async componentDidMount(){
         let res = await axios.get('/api/user-data');
          // invoke action creator
-         console.log(res.data)
          this.props.displayUser(res.data[0])
      }
 

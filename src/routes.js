@@ -16,7 +16,7 @@ export default (
         <Route path='/account' component={Account}/>
         <Route path='/contact' component={Contact}/>
         <Route path='/login' component={Login}/>
-        <Route path='/randomize' component={Randomize}/>
+        <Route path='/randomize/:type' component={Randomize}/>
         <Route path='/restaurant' component={Restaurant}/>
     </Switch>
 )

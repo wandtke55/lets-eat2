@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import './Restaurant.css';
 import AddComment from './Comment Components/AddComment';
 import CommentContainer from './Comment Components/CommentContainer';
 import axios from 'axios'
+import Map1 from './Map1';
+import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {selectRestaurant} from '../dux/reducer';
 
 
 class Restaurant extends Component{
@@ -16,52 +19,33 @@ class Restaurant extends Component{
     }
 
     addComment = (comment) => {
-        console.log(comment)
         axios.post('/api/comment', {comment})
         .then( comments => console.log(comments) || this.setState({comments: comments.data}))
       }
 
-    addToFavoritesList(){
-        
-    }
+    // myRestaurant(restaurant){
+    //     this.props.displayRestaurant(restaurant)
+    // }
 
     render(){
-        const style = {
-            width: '70%',
-            height: '50%',
-            marginTop: '30%',
-            marginLeft: '15%'
-        }
+        let {
+            restaurant,
+            image,
+            address
+        } = this.props
+        console.log(this.props)
         return(
             <div>
+                    <p>{restaurant}</p>
+                    <img className='restaurant-img' src={image} alt=''/>
+                    <p>{address}</p>
                 <div>
-                    <h1> This is where the name of the Randomized Restaurant is to be displayed.
-                    </h1>
-                    <Map
-                google={this.props.google}
-                style={style}
-                initialCenter={{
-                lat: 40.2338,
-                lng: -111.6585
-                }}
-                 zoom={15}
-                 onClick={this.onMapClicked}
-                 >
-
-                <Marker onClick={this.onMarkerClick}
-                 name={'Current location'} />
-
-                 <InfoWindow onClose={this.onInfoWindowClose}>
-                    {/* <div>
-                        <h1>{this.state.selectedPlace.name}</h1>
-                    </div> */}
-                 </InfoWindow>
-                 </Map>
+                 <Map1 />
                 </div>
                 <div className='restaurant-addons'>
                 <button>Menu to display here</button>
                 <button>Add To Favorites List</button>
-                <button>Go To Restaurant</button>
+                <Link to=''><button>Go To Restaurant</button></Link>
                 <h1>Comments About This Restaurant</h1>
                 <AddComment addComment={this.addComment}/>
                 <CommentContainer comments={this.state.comments}/>
@@ -71,7 +55,14 @@ class Restaurant extends Component{
     }
 }
 
-let {REACT_APP_GOOGLE_API} = process.env
-export default GoogleApiWrapper({
-    apiKey: (REACT_APP_GOOGLE_API)
-})(Restaurant)
+const mapStateToProps = state => {
+    console.log(state)
+    return{
+        restaurant: state.restaurantName,
+        image: state.restaurantImage,
+        address: state.restaurantAddress
+    }
+}
+
+
+export default connect(mapStateToProps, {selectRestaurant})(Restaurant)

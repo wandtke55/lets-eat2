@@ -17,7 +17,16 @@ module.exports = {
       req.app.get('db')
       .add_comment([titleInput, commentInput])
       .then( comments => {
-        res.status(201).send(comments);
+        console.log('got comments: ', comments)
+        // res.status(200).send(comments);
+        try{
+            comments = Object.assign([], comments);
+            res.send(JSON.stringify(comments));
+        }catch(err){
+            console.log('res.send error: ', err)
+        }
+      }).catch(err => {
+          console.log('addComment db error', err)
       })
     },
   
@@ -32,9 +41,9 @@ module.exports = {
   
     updateComment: (req, res) => {
       let { id } = req.params;
-      let { title, note } = req.body;
+      let { titleInput, commentInput } = req.body;
       req.app.get('db')
-      .update_comment([title, note, id])
+      .update_comment([titleInput, commentInput, id])
       .then( comments => {
         return res.send(comments);
       })
