@@ -1,12 +1,33 @@
 import React, {Component} from 'react';
-import {Map, Marker, GoogleApiWrapper} from 'google-maps-react';
+import {Map, Marker, InfoWindow, GoogleApiWrapper} from 'google-maps-react';
 import {connect} from 'react-redux';
 import {selectRestaurant} from '../dux/reducer'
 
 class Map1 extends Component{
 
+    state = {
+        showingInfoWindow: false,
+        activeMarker: {},
+        selectedPlace: this.props.restaurant
+    }
+
+    onMarkerClick = (props, marker, e) =>
+    this.setState({
+      activeMarker: marker,
+      showingInfoWindow: true
+    });
+ 
+  onMapClicked = (props) => {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null
+      })
+    }
+  };
+
     render(){
-        const {lat, lng} = this.props
+        const {lat, lng, restaurant, address} = this.props
         const style = {
             width: '70%',
             height: '50%',
@@ -25,10 +46,18 @@ class Map1 extends Component{
                  onClick={this.onMapClicked}
                  >
 
-                <Marker onClick={this.onMarkerClick}
-                 name={'Current location'} />
+                <Marker onClick={this.onMarkerClick} 
+                    name={restaurant} />
 
-                 
+                <InfoWindow
+                    marker={this.state.activeMarker}
+                    visible={this.state.showingInfoWindow}>
+                    <div>
+                        <h1>{this.state.selectedPlace}</h1>
+                        <h4>{address}</h4>
+                    </div>
+                </InfoWindow>
+
                  </Map>
         )}
 }
@@ -36,7 +65,9 @@ class Map1 extends Component{
 const mapStateToProps = state => {
     return {
         lat: state.latitude,
-        lng: state.longitude
+        lng: state.longitude,
+        restaurant: state.restaurantName,
+        address: state.restaurantAddress
     }
 }
 

@@ -6,6 +6,7 @@ const axios = require('axios');
 const session = require('express-session');
 const app = express();
 const comment_controller = require('./comment_controller');
+const favorites_controller = require('./favorites_controller')
 const {
     SERVER_PORT,
     REACT_APP_DOMAIN,
@@ -58,13 +59,15 @@ app.get('/auth/callback', async (req, res) => {
     // Copy and Paste Finish
     let {
         sub,
-        picture
+        picture,
+        email
     } = resWithData.data
-    let user = await req.app.get('db').check_user([sub])
+    console.log(resWithData.data)
+    let user = await req.app.get('db').check_user([sub, email])
     if (user[0]) {
         req.session.user = user
     } else {
-        user = req.app.get('db').add_user_info([sub, picture])
+        user = req.app.get('db').add_user_info([sub, picture, email])
         req.session.user = user
     }
     res.redirect('http://localhost:3000')
@@ -83,11 +86,16 @@ app.get('/auth/logout', (req, res) => {
     res.redirect('http://localhost:3000/#/')
 })
 
-//api comment endpoints
-app.get('/api/comment', comment_controller.getComments)
+// api comment endpoints
+app.get('/api/comment/:id', comment_controller.getComments)
 app.post('/api/comment', comment_controller.addComment)
 app.put('/api/comment/:id', comment_controller.updateComment)
 app.delete('/api/comment/:id', comment_controller.deleteComment)
+
+// user favorites endpoints
+app.get('/api/favorites', favorites_controller.getFavorites)
+app.post('/api/favorites', favorites_controller.addFavorite)
+app.delete('/api/delete-favorite/:id', favorites_controller.deleteFavorite)
 
 // api randomize endpoints
 app.get('/api/get-restaurant', async (req, res) => {

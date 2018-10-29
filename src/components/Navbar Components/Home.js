@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import Favorites from '../UserFavs Components/Favorites';
 
 class Home extends Component{
     render(){
@@ -39,6 +40,15 @@ class Home extends Component{
                     <Link to='/randomize/steak'><button>Steakhouses</button></Link>
                     <Link to='/randomize/vegan'><button>Vegan</button></Link>
                     <Link to='randomize/wraps'><button>Wraps</button></Link>
+                </div>
+                <div>
+                    <h1>USER FAVORITES</h1>
+                    <div className='user-favorites-list'>
+                        <h1>Here are your current favorite restaurants</h1>
+                        <div className='display-favorites'>
+                            <Favorites />
+                        </div>
+                    </div>
                 </div>
             </div>
         )

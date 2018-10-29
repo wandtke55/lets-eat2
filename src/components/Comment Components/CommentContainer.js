@@ -5,7 +5,7 @@ export default function CommentContainer(props) {
     
     let displayComments = props.comments.map( (comment) => {
         return (
-           <Comment key={comment.id} comment={comment} />
+           <Comment key={comment.id} handleDeleteComment={props.handleDeleteComment} submitEdit= {props.submitEdit} comment={comment} />
         )
     })
 

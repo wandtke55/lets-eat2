@@ -8,7 +8,7 @@
 }
 
 .food-container{
-  margin: 50px 300px;
+  margin: 50px 400px;
 }
 
 .nav-bar{
@@ -27,7 +27,14 @@
 }
 
 .user-favorites-list{
-  border: solid 2px black
+  border: solid 2px black;
+  margin: 30px;
+}
+
+.display-favorites{
+  border: dotted 2px black;
+  height: 100px;
+  margin: 50px 300px;
 }
 
 .addcomment-textarea{
@@ -37,6 +44,14 @@
 
 .restaurant-img{
   height: 200px;
+}
+
+.restaurant-addons{
+  margin-top: 50%
+}
+
+.map-resize{
+  height: 300px;
 }
 
 .commentcontainer-container{
