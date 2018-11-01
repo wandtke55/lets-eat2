@@ -3,6 +3,7 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {selectRestaurant} from '../dux/reducer';
+import Spinner from './Spinner Component/Spinner';
 
 
 
@@ -36,16 +37,18 @@ export class Randomize extends Component{
         })
     }
 
-    selectRestaurant(latitude, longitude, name, image, address){
-        this.props.selectRestaurant(latitude, longitude, name, image, address)
-    }
 
     render(){
+        if (!this.state.restaurant.businesses){
+            return (
+                <Spinner />
+            )
+        }
         if (this.state.restaurant.businesses){
         var restaurants = this.state.restaurant.businesses.map(e => {
             return (
                 <div key={e.id}>
-                <Link to='/restaurant'><button onClick={() => this.selectRestaurant(e.coordinates.latitude, e.coordinates.longitude, e.name, e.image_url, e.location.display_address)}>{e.name}</button></Link>
+                <Link to='/restaurant'><button onClick={() => this.props.selectRestaurant(e.coordinates.latitude, e.coordinates.longitude, e.name, e.image_url, e.location.display_address, e.id)}>{e.name}</button></Link>
                 <p>{e.location.display_address}</p>
                 <img className='restaurant-img' src={e.image_url} alt=''/>
                 </div>
@@ -60,14 +63,6 @@ export class Randomize extends Component{
                 
                 <div className='the-randomizer'>
                 <div>{restaurants}</div>
-                </div>
-                <div className='user-favorites-list'>
-                    <p>
-                    This will hopefully become the list of the users favorite restaurants that have been generated
-                    </p>
-                </div>
-                <Link to='/restaurant'><button>Select Restaurant</button></Link>
-                <div className='restaurant-name'>
                 </div>
             </div>
         )

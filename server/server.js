@@ -14,7 +14,10 @@ const {
     CLIENT_SECRET,
     CONNECTION_STRING,
     SECRET,
-    YELP_API
+    YELP_API,
+    REACT_APP_LOGOUT,
+    REACT_APP_HOME,
+    AUTH_PROTOCOL
 } = process.env
 
 massive(CONNECTION_STRING).then(db => {
@@ -23,6 +26,7 @@ massive(CONNECTION_STRING).then(db => {
 })
 
 //middleware
+app.use(express.static( `${__dirname}/../build`) );
 app.use(session({
     secret: SECRET,
     resave: false,
@@ -50,7 +54,7 @@ app.get('/auth/callback', async (req, res) => {
         client_secret: CLIENT_SECRET,
         code: req.query.code,
         grant_type: 'authorization_code',
-        redirect_uri: `http://${req.headers.host}/auth/callback`
+        redirect_uri: `${AUTH_PROTOCOL}://${req.headers.host}/auth/callback`
     }
     //exchange code for token. token is on resWithToken.data.access_token
     let resWithToken = await axios.post(`https://${REACT_APP_DOMAIN}/oauth/token`, payload)
@@ -65,12 +69,12 @@ app.get('/auth/callback', async (req, res) => {
     console.log(resWithData.data)
     let user = await req.app.get('db').check_user([sub, email])
     if (user[0]) {
-        req.session.user = user
+        req.session.user = user[0]
     } else {
         user = req.app.get('db').add_user_info([sub, picture, email])
         req.session.user = user
     }
-    res.redirect('http://localhost:3000')
+    res.redirect(REACT_APP_HOME)
 })
 
 app.get('/api/user-data', (req, res) => {
@@ -83,18 +87,18 @@ app.get('/api/user-data', (req, res) => {
 
 app.get('/auth/logout', (req, res) => {
     req.session.destroy()
-    res.redirect('http://localhost:3000/#/')
+    res.redirect(REACT_APP_LOGOUT)
 })
 
 // api comment endpoints
 app.get('/api/comment/:id', comment_controller.getComments)
 app.post('/api/comment', comment_controller.addComment)
-app.put('/api/comment/:id', comment_controller.updateComment)
-app.delete('/api/comment/:id', comment_controller.deleteComment)
+app.put('/api/comment/:id/:restaurantId', comment_controller.updateComment)
+app.delete('/api/comment/:id/:restaurantId', comment_controller.deleteComment)
 
 // user favorites endpoints
-app.get('/api/favorites', favorites_controller.getFavorites)
-app.post('/api/favorites', favorites_controller.addFavorite)
+app.get('/api/favorites/:id', favorites_controller.getFavorites)
+app.post('/api/favorites/', favorites_controller.addFavorite)
 app.delete('/api/delete-favorite/:id', favorites_controller.deleteFavorite)
 
 // api randomize endpoints

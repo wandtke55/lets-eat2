@@ -26,15 +26,23 @@
   margin-right: 20px;
 }
 
+.account-pic{
+  height: 200px;
+}
+
 .user-favorites-list{
   border: solid 2px black;
   margin: 30px;
 }
 
+.user-favs-bground{
+  
+}
+
 .display-favorites{
   border: dotted 2px black;
   height: 100px;
-  margin: 50px 300px;
+  margin: 50px 600px;
 }
 
 .addcomment-textarea{

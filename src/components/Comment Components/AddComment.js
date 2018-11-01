@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
 class AddComment extends Component {
     constructor() {
         super();
         this.state = {
             titleInput: '',
-            commentInput: ''
+            commentInput: '',
+            isAdmin: false
         }
     }
 
@@ -22,14 +24,19 @@ class AddComment extends Component {
     }
 
     addNewComment = () => {
+        if(this.props.user.id){
         let newComment = {
             titleInput: this.state.titleInput,
             commentInput: this.state.commentInput
         }
-        this.props.addComment(newComment)
+        this.props.addComment(newComment, this.props.id)
+      } else {
+          alert('PLEASE LOGIN TO COMMENT')
+      }
     }
 
     render() {
+        console.log(this.props)
         return (
             <div className='addcomment-container'>
                 <div>
@@ -42,5 +49,11 @@ class AddComment extends Component {
     }
 }
 
+const mapStateToProps = state => {
+    return{
+        id: state.restaurantId,
+        user: state.user
+    }
+}
 
-export default AddComment
+export default connect(mapStateToProps)(AddComment)

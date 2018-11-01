@@ -9,14 +9,16 @@ module.exports = {
     },
   
     addComment: (req, res) => {
-        console.log(req.body)
-      let { titleInput, commentInput } = req.body.comment;
-      console.log(titleInput, commentInput)
+        console.log(req.body.comment)
+      let { titleInput, commentInput} = req.body.comment;
+      let {restaurantId} = req.body
+      console.log(titleInput, commentInput, restaurantId)
       if(!titleInput || !commentInput) {
           return res.sendStatus(400)
       }
+      console.log('this is the user comment', req.session.user.id)
       req.app.get('db')
-      .add_comment([titleInput, commentInput])
+      .add_comment([req.session.user.id,titleInput, commentInput,restaurantId])
       .then( comments => {
         // console.log('got comments: ', comments)
         // res.status(200).send(comments);
@@ -27,22 +29,23 @@ module.exports = {
     },
   
     deleteComment: (req, res) => {
-      let { id } = req.params;
+      let { id, restaurantId} = req.params;
       req.app.get('db')
-      .delete_comment([id])
+      .delete_comment([id, restaurantId])
       .then( comments => {
         return res.send(comments);
       })
     },
   
     updateComment: (req, res) => {
-      let { id } = req.params;
-      let { titleInput, commentInput } = req.body;
+      let { id, restaurantId} = req.params;
+      let { titleInput, commentInput} = req.body;
+      console.log(req.body)
       req.app.get('db')
-      .update_comment([titleInput, commentInput, id])
+      .update_comment([titleInput, commentInput, id, restaurantId])
       .then( comments => {
         console.log(comments)
         return res.send(comments);
-      })
+      }).catch(err => console.log('this is the update comment error', err))
     }
   };

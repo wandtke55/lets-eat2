@@ -9,7 +9,7 @@ class Account extends Component{
     async componentDidMount(){
         let res = await axios.get('/api/user-data');
          // invoke action creator
-         this.props.displayUser(res.data[0])
+         this.props.displayUser(res.data)
      }
 
     render(){
@@ -19,8 +19,8 @@ class Account extends Component{
         } = this.props.user
         return(
             <div>
-            <p>username: {email}</p>
-            <img src={image} alt=''/>
+            <h1>username: {email}</h1>
+            <img src={image} alt='' className='account-pic'/>
             </div>
         )
     }

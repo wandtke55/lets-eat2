@@ -6,7 +6,7 @@ import {selectRestaurant} from '../dux/reducer'
 class Map1 extends Component{
 
     state = {
-        showingInfoWindow: false,
+        showingInfoWindow: true,
         activeMarker: {},
         selectedPlace: this.props.restaurant
     }

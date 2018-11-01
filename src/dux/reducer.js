@@ -5,11 +5,14 @@ const initialState = {
     comments: [],
     restaurantName: '',
     restaurantImage: '',
-    restaurantAddress: ''
+    restaurantAddress: '',
+    favorites: [],
+    restaurantId: ''
 }
 
 const DISPLAY_USER = 'DISPLAY_USER'
 const SELECT_RESTAURANT = 'SELECT_RESTAURANT'
+const DISPLAY_FAVORITE = 'DISPLAY_FAVORITE'
 
 export default function reducer(state = initialState, action){
     switch(action.type){
@@ -23,8 +26,12 @@ export default function reducer(state = initialState, action){
             longitude: action.payload.longitude,
             restaurantName: action.payload.name,
             restaurantImage: action.payload.image,
-            restaurantAddress: action.payload.address
+            restaurantAddress: action.payload.address,
+            restaurantId: action.payload.id
         })
+
+        case DISPLAY_FAVORITE:
+        return Object.assign({}, state, {favorites: action.payload})
 
 
         default:
@@ -39,9 +46,16 @@ export function displayUser(data){
     }
 }
 
-export function selectRestaurant(latitude, longitude, name, image, address){
+export function selectRestaurant(latitude, longitude, name, image, address, id){
     return{
         type: SELECT_RESTAURANT,
-        payload: {latitude, longitude, name, image, address}
+        payload: {latitude, longitude, name, image, address, id}
+    }
+}
+
+export function displayFavorite(favorites){
+    return{
+        type: DISPLAY_FAVORITE,
+        payload: favorites
     }
 }

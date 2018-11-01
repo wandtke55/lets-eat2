@@ -22,3 +22,4 @@ yarn-error.log*
 
 #security
 .env
+.env.prod

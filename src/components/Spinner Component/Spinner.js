@@ -1,7 +1,6 @@
 import React from 'react';
 import { css } from 'react-emotion';
-// First way to import
-import { ClipLoader } from 'react-spinners';
+import { RingLoader } from 'react-spinners';
  
 const override = css`
     display: block;
@@ -18,11 +17,11 @@ class Spinner extends React.Component {
   }
   render() {
     return (
-      <div className='sweet-loading'>
-        <ClipLoader
+      <div className='sweet-loading-two'>
+        <RingLoader
           className={override}
           sizeUnit={"px"}
-          size={150}
+          size={500}
           color={'#42dcf4'}
           loading={this.state.loading}
         />

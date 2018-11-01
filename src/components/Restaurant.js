@@ -5,7 +5,6 @@ import axios from 'axios'
 import Map1 from './Map1';
 // import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {selectRestaurant} from '../dux/reducer';
 
 
 class Restaurant extends Component{
@@ -14,20 +13,20 @@ class Restaurant extends Component{
 
         this.state = {
             comments: [],
-            favorites: []
+            favorites: ''
         }
         
     }
 
     componentDidMount(){
-        axios.get(`/api/comments/${this.props.id}`)
+        axios.get(`/api/comment/${this.props.id}`)
         .then(res => this.setState({
             comments: res.data
         }))
     }
 
-    addComment = (comment) => {
-        axios.post('/api/comment', {comment})
+    addComment = (comment, restaurantId) => {
+        axios.post('/api/comment', {comment, restaurantId})
         .then( comments => console.log(comments) || this.setState({comments: comments.data}))
       }
 
@@ -37,17 +36,17 @@ class Restaurant extends Component{
 
     addFavorite = (favorite) => {
         axios.post('/api/favorites', {favorite})
-        .then( favorite => console.log(favorite) || this.setState({favorites: favorite.data}))
+        .then( favorites => console.log(favorites) || this.setState({favorites: favorites.data}))
       }
 
       handleDeleteComment = (id) => {
-        axios.delete(`/api/comment/${id}`).then(res => this.setState({
+        axios.delete(`/api/comment/${id}/${this.props.id}`).then(res => this.setState({
             comments: res.data
         }))
     }
 
-      submitEdit = (id, titleInput, commentInput) => {
-        axios.put(`/api/comment/${id}`, {titleInput, commentInput})
+      submitEdit = (id, titleInput, commentInput, restaurantId) => {
+        axios.put(`/api/comment/${id}/${restaurantId}`, {titleInput, commentInput})
         .then(res => this.setState({
             comments: res.data
         }))
@@ -58,8 +57,11 @@ class Restaurant extends Component{
             restaurant,
             image,
             address,
+            latitude,
+            longitude
         } = this.props
         console.log(this.props)
+        console.log(this.state)
         return(
             <div>
                     <p>{restaurant}</p>
@@ -68,8 +70,8 @@ class Restaurant extends Component{
                  <Map1 />
                 </div>
                 <div className='restaurant-addons'>
-                <button onClick={this.addFavorite}>Add To Favorites List</button>
-                <a href={'https://www.google.com/maps/place/'+ restaurant + '%20' + address}><button>Go To Restaurant</button></a>
+                <button onClick={() => this.addFavorite(restaurant)}>Add To Favorites List</button>
+                <a href={'https://www.google.com/maps/place/'+ restaurant + '%20' + address + latitude + longitude}><button>Go To Restaurant</button></a>
                 <h1>Comments About This Restaurant</h1>
                 <AddComment addComment={this.addComment}/>
                 <CommentContainer handleDeleteComment={this.handleDeleteComment} submitEdit= {this.submitEdit} comments={this.state.comments}/>
@@ -85,8 +87,12 @@ const mapStateToProps = state => {
         restaurant: state.restaurantName,
         image: state.restaurantImage,
         address: state.restaurantAddress,
+        latitude: state.latitude,
+        longitude: state.longitude,
+        favorites: state.favorites,
+        id: state.restaurantId
     }
 }
 
 
-export default connect(mapStateToProps, {selectRestaurant})(Restaurant)
+export default connect(mapStateToProps)(Restaurant)

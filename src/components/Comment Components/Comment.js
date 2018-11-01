@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import axios from 'axios';
+import {connect} from 'react-redux';
+import DeleteBtn from '../DeleteBtn';
 
 class Comment extends Component {
     constructor(props) {
@@ -34,14 +35,23 @@ class Comment extends Component {
         this.props.handleDeleteComment(id)
     }
 
-    submitEdit(id, titleInput, commentInput){
-        this.props.submitEdit(id, titleInput, commentInput)
+    submitEdit(id, titleInput, commentInput, restaurantId){
+        this.props.submitEdit(id, titleInput, commentInput, restaurantId)
+    }
+
+    checkUserOrAdmin(){
+        let {comment: {user_id: commentUser}, user: {id, isadmin}} = this.props
+        if(commentUser === id || isadmin){
+            return true
+        } 
+        return false
     }
 
   
     render() {
         console.log(this.state.comments)
         console.log(this.props.comment)
+        const allowEdit = this.checkUserOrAdmin()
     return (
       <div className="commentcontainer-comment" key={this.props.comment.id}>
       { this.state.editing
@@ -60,14 +70,21 @@ class Comment extends Component {
             value={this.state.commentInput} 
             onChange={this.handleCommentInput}/> */}
         <p>{this.props.comment.comment}</p>
-        <button onClick={()=>this.submitEdit(this.props.comment.id, this.props.comment.comment_title, this.state.commentInput)}>Submit</button>
+        {allowEdit && <div>
+        <button onClick={()=>this.submitEdit(this.props.comment.id, this.props.comment.comment_title, this.state.commentInput, this.props.comment.restaurantId)}>Submit</button>
         <button onClick={this.toggleEditing}>Edit</button>
-        <button onClick={()=> this.handleDeleteComment(this.props.comment.id)}>Delete</button>
-        <p className="commentcontainer-date">{this.props.comment.date}</p>
+        <DeleteBtn times={2} dialog={['Delete', 'Are You Sure?']} action={()=> this.handleDeleteComment(this.props.comment.id)}/>
+        </div>}
       </div>
     );
   }
 }
 
+const mapStateToProps = state => {
+    return{
+        user: state.user,
+    }
+}
 
-export default Comment
+
+export default connect(mapStateToProps)(Comment)
