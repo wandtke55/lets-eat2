@@ -22,13 +22,13 @@ class Home extends Component{
         return(
             <div>
                 <div className='intro'>
-                <h1>Welcome to Lets-Eat! Your helper for finding GOOD places to eat!</h1>
-                <p>
-                    Here on Lets-Eat we help you decide where to eat and help you get there! Making a sometimes tough choice a snap! Select which type of food to eat and watch as the places come poaring in!
-                </p>
-                <h4>LOGIN USING THE SIDE NAVIGATION TO YOUR LEFT TO GET STARTED!</h4>
+                <h1>Welcome to Rando-Dine! Your Randomized Dining Experience!</h1>
+                <h4>
+                    Here on Rando-Dine we help you decide where to eat and help you get there! Making a sometimes tough choice a snap! Select which type of food to eat and watch as the places come poaring in!
+                </h4>
+                <p>LOGIN USING THE SIDE NAVIGATION TO YOUR LEFT TO GET STARTED! ONCE YOU'RE LOGGED IN YOUR FAVORITES WILL APPEAR ON THE HOME PAGE! IF YOU DON'T HAVE ANY START EATING AND ADDING FOR FUTURE OCCASIONS!</p>
                 </div>
-                <h1>Food Types</h1>
+                <h1>Select Your Food Type To Get Started!</h1>
                 <div className='food-container'>
                     <Link to='/randomize/american'><button>American</button></Link>
                     <Link to='/randomize/asian'><button>Asian</button></Link>
