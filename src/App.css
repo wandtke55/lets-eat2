@@ -118,6 +118,14 @@ canvas {
   color: black;
 }
 
+.randomize-display{
+  text-shadow: 3px 3px #9198e5;
+}
+
+.restaurants{
+  padding: 30px;
+}
+
 .bouncy{
   animation: bouncy 3s linear;
   animation-iteration-count: 3;

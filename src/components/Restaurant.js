@@ -64,7 +64,7 @@ class Restaurant extends Component{
         console.log(this.state)
         return(
             <div>
-                    <p>{restaurant}</p>
+                    <h3 className='restaurants'>{restaurant}</h3>
                     <img className='restaurant-img' src={image} alt=''/>
                 <div className='map-resize'>
                  <Map1 />
