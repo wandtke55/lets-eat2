@@ -71,7 +71,7 @@ class Comment extends Component {
             onChange={this.handleCommentInput}/> */}
         <p>{this.props.comment.comment}</p>
         {allowEdit && <div>
-        <button onClick={()=>this.submitEdit(this.props.comment.id, this.props.comment.comment_title, this.state.commentInput, this.props.comment.restaurantId)}>Submit</button>
+        <button onClick={()=>this.submitEdit(this.props.comment.id, this.props.comment.comment_title, this.state.commentInput, this.props.comment.restaurant_id)}>Submit</button>
         <button onClick={this.toggleEditing}>Edit</button>
         <DeleteBtn times={2} dialog={['Delete', 'Are You Sure?']} action={()=> this.handleDeleteComment(this.props.comment.id)}/>
         </div>}
