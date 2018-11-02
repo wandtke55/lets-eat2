@@ -33,15 +33,15 @@ class Favorites extends Component{
         let userFavs = this.state.favorites.map((favorites, id)=>{
             return(
                 <div key={id} className='display-favorites'>
-                <p>{favorites.name}</p>
+                <p className='fav-name'>{favorites.name}</p>
                 <DeleteBtn times={2} dialog={['Delete Favorite?', 'Are You Sure?']}action={()=> this.deleteFavorite(favorites.id)}/>
-                <a href={'https://www.google.com/maps/place/'+ favorites.name}><button>Go To Restaurant</button></a>
+                <a href={'https://www.google.com/maps/place/'+ favorites.name} className='btn'><button>Go To Restaurant</button></a>
                 </div>
             )
         })
         return(
             <div className='user-favorites-list'>
-                        <h1>Here are your current favorite restaurants</h1>
+                        <h1 className='list-title'>Here are your current favorite restaurants</h1>
                 {userFavs}
             </div>
         )
