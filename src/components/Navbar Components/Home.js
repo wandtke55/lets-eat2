@@ -26,41 +26,41 @@ class Home extends Component{
                 <h4>
                     Here on Rando-Dine we help you decide where to eat and help you get there! Making a sometimes tough choice a snap! Select which type of food to eat and watch as the places come poaring in!
                 </h4>
-                <p>LOGIN USING THE SIDE NAVIGATION TO YOUR LEFT TO GET STARTED! ONCE YOU'RE LOGGED IN YOUR FAVORITES WILL APPEAR ON THE HOME PAGE! IF YOU DON'T HAVE ANY START EATING AND ADDING FOR FUTURE OCCASIONS!</p>
-                </div>
+                <h4>LOGIN USING THE SIDE NAVIGATION TO YOUR LEFT TO GET STARTED! ONCE YOU'RE LOGGED IN YOUR FAVORITES WILL APPEAR ON THE HOME PAGE! IF YOU DON'T HAVE ANY START EATING AND ADDING FOR FUTURE OCCASIONS!</h4>
                 <h1>Select Your Food Type To Get Started!</h1>
+                </div>
                 <div className='food-container'>
-                    <Link to='/randomize/american'><button>American</button></Link>
-                    <Link to='/randomize/asian'><button>Asian</button></Link>
-                    <Link to='/randomize/buffets'><button>Buffets</button></Link>
-                    <Link to='/randomize/burgers'><button>Burgers</button></Link>
-                    <Link to='/randomize/cafe'><button>Cafe</button></Link>
-                    <Link to='/randomize/newcanadian'><button>Canadian</button></Link>
-                    <Link to='/randomize/cheesesteaks'><button>Cheesesteaks</button></Link>
-                    <Link to='/randomize/chinese'><button>Chinese</button></Link>
-                    <Link to='/randomize/creperies'><button>Creperies</button></Link>
-                    <Link to='/randomize/delis'><button>Delis</button></Link>
-                    <Link to='/randomize/fast-food'><button>Fast Food</button></Link>
-                    <Link to='/randomize/french'><button>French</button></Link>
-                    <Link to='/randomize/gluten-free'><button>Gluten-Free</button></Link>
-                    <Link to='/randomize/hawaiian'><button>Hawaiian</button></Link>
-                    <Link to='/randomize/indian'><button>Indian</button></Link>
-                    <Link to='/randomize/italian'><button>Italian</button></Link>
-                    <Link to='/randomize/kebab'><button>Kebab</button></Link>
-                    <Link to='/randomize/mexican'><button>Mexican</button></Link>
-                    <Link to='/randomize/noodles'><button>Noodles</button></Link>
-                    <Link to='/randomize/pita'><button>Pita</button></Link>
-                    <Link to='/randomize/pizza'><button>Pizza</button></Link>
-                    <Link to='/randomize/polynesian'><button>Polynesian</button></Link>
-                    <Link to='/randomize/scandinavian'><button>Scandinavian</button></Link>
-                    <Link to='/randomize/soup'><button>Soup</button></Link>
-                    <Link to='/randomize/steak'><button>Steakhouses</button></Link>
-                    <Link to='/randomize/sushi'><button>Sushi</button></Link>
-                    <Link to='/randomize/vegan'><button>Vegan</button></Link>
-                    <Link to='randomize/wraps'><button>Wraps</button></Link>
+                    <Link to='/randomize/american' className='btn'><button>American</button></Link>
+                    <Link to='/randomize/asian'className='btn'><button>Asian</button></Link>
+                    <Link to='/randomize/buffets'className='btn'><button>Buffets</button></Link>
+                    <Link to='/randomize/burgers'className='btn'><button>Burgers</button></Link>
+                    <Link to='/randomize/cafe'className='btn'><button>Cafe</button></Link>
+                    <Link to='/randomize/newcanadian'className='btn'><button>Canadian</button></Link>
+                    <Link to='/randomize/cheesesteaks'className='btn'><button>Cheesesteaks</button></Link>
+                    <Link to='/randomize/chinese'className='btn'><button>Chinese</button></Link>
+                    <Link to='/randomize/creperies'className='btn'><button>Creperies</button></Link>
+                    <Link to='/randomize/delis'className='btn'><button>Delis</button></Link>
+                    <Link to='/randomize/fast-food'className='btn'><button>Fast Food</button></Link>
+                    <Link to='/randomize/french'className='btn'><button>French</button></Link>
+                    <Link to='/randomize/gluten-free'className='btn'><button>Gluten-Free</button></Link>
+                    <Link to='/randomize/hawaiian'className='btn'><button>Hawaiian</button></Link>
+                    <Link to='/randomize/indian'className='btn'><button>Indian</button></Link>
+                    <Link to='/randomize/italian'className='btn'><button>Italian</button></Link>
+                    <Link to='/randomize/kebab'className='btn'><button>Kebab</button></Link>
+                    <Link to='/randomize/mexican'className='btn'><button>Mexican</button></Link>
+                    <Link to='/randomize/noodles'className='btn'><button>Noodles</button></Link>
+                    <Link to='/randomize/pita'className='btn'><button>Pita</button></Link>
+                    <Link to='/randomize/pizza'className='btn'><button>Pizza</button></Link>
+                    <Link to='/randomize/polynesian'className='btn'><button>Polynesian</button></Link>
+                    <Link to='/randomize/scandinavian'className='btn'><button>Scandinavian</button></Link>
+                    <Link to='/randomize/soup'className='btn'><button>Soup</button></Link>
+                    <Link to='/randomize/steak'className='btn'><button>Steakhouses</button></Link>
+                    <Link to='/randomize/sushi'className='btn'><button>Sushi</button></Link>
+                    <Link to='/randomize/vegan'className='btn'><button>Vegan</button></Link>
+                    <Link to='randomize/wraps'className='btn'><button>Wraps</button></Link>
                 </div>
                 <div>
-                    <h1>{email} FAVORITES</h1>
+                    <h3 className='ufav'>{email} FAVORITES</h3>
                     <div >
                         
                         <div>
