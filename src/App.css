@@ -168,7 +168,7 @@ canvas {
   }
 }
 
-@media(max-width: 400px){
+@media(max-width: 500px){
   .nav-bar{
     
   }
@@ -186,8 +186,8 @@ canvas {
     justify-content: center;
     align-items: center;
   }
-  .user-favorites-list{
-
+  .display-favorites{
+    height: 200px;
   }
   .food-container{
     width: 100%;
