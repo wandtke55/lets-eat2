@@ -24,9 +24,7 @@ class Material extends Component{
         return(
             <div>
                 <AppBar title='RANDO-DINE!' iconClassNameRight='muidocs-icon-navigation-expand-more' onLeftIconButtonClick={this.toggleDrawer}>
-                <div >
                 <Nav />
-                </div>
                 </AppBar>
                 <Drawer 
                 open={this.state.drawer}

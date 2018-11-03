@@ -1,6 +1,6 @@
 canvas {
   text-align: center;
-  background: linear-gradient(#fc00ff, #00dbde);
+  background: linear-gradient( #00dbde, #e600e6CC);
   position: fixed;
   top: 0;
   left: 0;
@@ -78,14 +78,14 @@ canvas {
   margin: 30px;
   box-shadow: 3px 3px 40px black;
   display: flex;
-  flex-direction: column
+  flex-direction: column;
 }
 
 .display-favorites{
   border: dotted 2px black;
   box-shadow: 3px 3px 40px black;
-  height: 120px;
-  margin: 50px 600px;
+  height: 180px;
+  margin: 30px 300px;
 }
 
 .addcomment-textarea{
@@ -102,7 +102,7 @@ canvas {
 }
 
 .map-resize{
-  height: 300px;
+  height: 450px;
 }
 
 .commentcontainer-container{
@@ -144,6 +144,7 @@ canvas {
   animation-delay: 0.21s;
 }
 
+
 @keyframes bouncy {
   0%{
       top: 0em;
@@ -169,9 +170,6 @@ canvas {
 }
 
 @media(max-width: 500px){
-  .nav-bar{
-    
-  }
   .food-container{
     align-items: center;
     width: 100%
@@ -190,11 +188,14 @@ canvas {
   .display-favorites{
     height: 200px;
   }
+  .map-resize{
+    height: 350px;
+  }
 }
 
 @media(max-width: 600px){
   .nav-bar{
-    margin-right: 100px
+    margin-right: 80px;
   }
   .food-container{
     align-items: center;
