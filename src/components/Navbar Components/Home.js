@@ -24,10 +24,10 @@ class Home extends Component{
                 <div className='intro'>
                 <h1>Welcome to Rando-Dine! Your Randomized Dining Experience!</h1>
                 <h4>
-                    Here on Rando-Dine we help you decide where to eat and help you get there! Making a sometimes tough choice a snap! Select which type of food to eat and watch as the places come poaring in!
+                    Here on Rando-Dine we help you decide where to eat and help you get there! Select which type of Restaurant you're interested in and watch as the restaurants come poaring in!
                 </h4>
-                <h4>LOGIN USING THE SIDE NAVIGATION TO YOUR LEFT TO GET STARTED! ONCE YOU'RE LOGGED IN YOUR FAVORITES WILL APPEAR ON THE HOME PAGE! IF YOU DON'T HAVE ANY START EATING AND ADDING FOR FUTURE OCCASIONS!</h4>
-                <h1>Select Your Food Type To Get Started!</h1>
+                <h4>LOG IN USING THE SIDE NAVIGATION TO YOUR LEFT TO GET STARTED! ONCE YOU'RE LOGGED IN YOUR FAVORITES WILL APPEAR ON THE HOME PAGE! IF YOU DON'T HAVE ANY, START EATING AND ADDING FOR FUTURE EXPERIENCES!</h4>
+                <h1>Select Your Restaurant Type To Get Started!</h1>
                 </div>
                 <div className='food-container'>
                     <Link to='/randomize/american' className='btn bouncy'><button>American</button></Link>

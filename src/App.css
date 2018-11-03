@@ -1,6 +1,6 @@
 canvas {
   text-align: center;
-  background: linear-gradient(#fc00ff, #00dbde80);
+  background: linear-gradient(#fc00ff, #00dbde);
   position: fixed;
   top: 0;
   left: 0;
@@ -173,7 +173,8 @@ canvas {
     
   }
   .food-container{
-    align-items: center
+    align-items: center;
+    width: 100%
   }
   .intro{
     margin: 20px;
@@ -189,8 +190,29 @@ canvas {
   .display-favorites{
     height: 200px;
   }
+}
+
+@media(max-width: 600px){
+  .nav-bar{
+    margin-right: 100px
+  }
   .food-container{
-    width: 100%;
+    align-items: center;
+    width: 100%
+  }
+  .intro{
+    margin: 60px;
+  }
+  .display-favorites{
+    margin: 80px;
+  }
+  .btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .display-favorites{
+    height: 150px;
   }
 }
 
