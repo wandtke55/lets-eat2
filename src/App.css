@@ -61,10 +61,17 @@ canvas {
   background: linear-gradient(to bottom, #00dbde, #e600e6)
 }
 
+.btn{
+  height: 30px;
+  padding: 0px 5px;
+  border-radius: 2%
+}
+
 .btn:hover {
   background: #2079b0;
   background-image: linear-gradient(to bottom, #00dbde, #e600e6);
   height: 25px;
+  border-radius: 2%;
 }
 
 .nav-bar{
@@ -229,9 +236,6 @@ canvas {
 }
 
 @media(max-width: 600px){
-  .nav-bar{
-    margin-right: 20px;
-  }
   .food-container{
     align-items: center;
     width: 100%
