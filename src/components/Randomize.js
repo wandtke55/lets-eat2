@@ -48,7 +48,7 @@ export class Randomize extends Component{
         var restaurants = this.state.restaurant.businesses.map(e => {
             return (
                 <div key={e.id} className='restaurants'>
-                <Link to='/restaurant'><button className='btn' onClick={() => this.props.selectRestaurant(e.coordinates.latitude, e.coordinates.longitude, e.name, e.image_url, e.location.display_address, e.id)}>{e.name}</button></Link>
+                <Link to='/restaurant'><button onClick={() => this.props.selectRestaurant(e.coordinates.latitude, e.coordinates.longitude, e.name, e.image_url, e.location.display_address, e.id)}>{e.name}</button></Link>
                 <h3>{e.name}</h3>
                 <p>{e.location.display_address}</p>
                 <img className='restaurant-img' src={e.image_url} alt=''/>
