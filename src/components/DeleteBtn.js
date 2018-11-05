@@ -33,7 +33,7 @@ class DeleteBtn extends Component {
     render() {
         const { timesPressed } = this.state
         const {dialog} = this.props;
-        return <button className='btn'onClick={this.onPress}>{dialog[timesPressed]} </button>
+        return <button className='btn-category'onClick={this.onPress}>{dialog[timesPressed]} </button>
     }
 }
 
