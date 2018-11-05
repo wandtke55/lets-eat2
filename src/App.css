@@ -230,7 +230,7 @@ canvas {
 
 @media(max-width: 600px){
   .nav-bar{
-    margin-right: 80px;
+    margin-right: 20px;
   }
   .food-container{
     align-items: center;
