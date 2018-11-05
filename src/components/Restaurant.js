@@ -74,6 +74,7 @@ class Restaurant extends Component{
                 <button onClick={() => this.addFavorite(restaurant)} id = 'favorites-btn'>Add To Favorites List</button>
                 <a href={'https://www.google.com/maps/place/'+ restaurant + '%20' + address + latitude + longitude}><button id = 'favorites-btn'>Go To Restaurant</button></a>
                 </div>
+                {/* <button id = 'favorites-btn'> Copy Restaurant Location</button> */}
                 <h1>Comments About This Restaurant</h1>
                 <AddComment addComment={this.addComment}/>
                 <CommentContainer handleDeleteComment={this.handleDeleteComment} submitEdit= {this.submitEdit} comments={this.state.comments}/>

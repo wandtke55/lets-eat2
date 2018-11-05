@@ -13,7 +13,7 @@ const particleOpt = {
         enable: true,
         value_area: 800,
       }
-    }
+    },
   }
 }
 

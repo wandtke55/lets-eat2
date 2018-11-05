@@ -34,6 +34,7 @@ class Favorites extends Component{
             return(
                 <div key={id} className='display-favorites'>
                 <p className='fav-name'>{favorites.name}</p>
+                {/* <img src={favorites.image} alt=''/> */}
                 <DeleteBtn times={2} dialog={['Delete Favorite?', 'Are You Sure?']}action={()=> this.deleteFavorite(favorites.id)}/>
                 <a href={'https://www.google.com/maps/place/'+ favorites.name} className='btn'><button>Go To Restaurant</button></a>
                 </div>
