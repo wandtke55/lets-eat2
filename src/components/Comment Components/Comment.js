@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import DeleteBtn from '../DeleteBtn';
+import StarRating from './StarRating'
 
 class Comment extends Component {
     constructor(props) {

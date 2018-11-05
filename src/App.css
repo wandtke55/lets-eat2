@@ -13,6 +13,10 @@ canvas {
   text-align: center
 }
 
+.title > h1{
+  padding-left: 170px !important;
+}
+
 .intro{
   margin: 20px 200px;
   border: dotted 2px black;
@@ -233,6 +237,9 @@ canvas {
   .addcomment-textarea{
     width: 90%;
   }
+  .sweet-loading-two{
+    margin-right: 40px;
+  }
 }
 
 @media(max-width: 600px){
@@ -256,6 +263,9 @@ canvas {
   }
   .addcomment-textarea{
     width: 90%;
+  }
+  .sweet-loading-two{
+    margin-right: 40px;
   }
 }
 
@@ -288,6 +298,9 @@ canvas {
   }
   .addcomment-textarea{
     width: 90%
+  }
+  .sweet-loading-two{
+    margin-right: 40px;
   }
 }
 @keyframes App-logo-spin {

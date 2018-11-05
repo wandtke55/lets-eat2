@@ -23,7 +23,7 @@ class Material extends Component{
     render(){
         return(
             <div>
-                <AppBar className='main' title='RANDO-DINE!' iconClassNameRight='muidocs-icon-navigation-expand-more' onLeftIconButtonClick={this.toggleDrawer}>
+                <AppBar title="Rando-Dine" className='title' iconClassNameRight='muidocs-icon-navigation-expand-more' onLeftIconButtonClick={this.toggleDrawer}>
                 <Nav />
                 </AppBar>
                 <Drawer 

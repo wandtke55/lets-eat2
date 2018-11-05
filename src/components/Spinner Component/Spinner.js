@@ -16,12 +16,13 @@ class Spinner extends React.Component {
     }
   }
   render() {
+    let spinnerSize = window.innerWidth * .34
     return (
       <div className='sweet-loading-two'>
         <RingLoader
           className={override}
           sizeUnit={"px"}
-          size={500}
+          size={spinnerSize}
           color={'#000000'}
           loading={this.state.loading}
         />
