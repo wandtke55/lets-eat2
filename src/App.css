@@ -211,6 +211,9 @@ canvas {
 }
 
 @media(max-width: 800px){
+  .title > h1 {
+    display: none;
+  }
   .food-container{
     align-items: center;
     width: 100%;
@@ -237,12 +240,12 @@ canvas {
   .addcomment-textarea{
     width: 90%;
   }
-  .sweet-loading-two{
-    margin-right: 40px;
-  }
 }
 
 @media(max-width: 600px){
+  .title > h1{
+    display: none;
+  }
   .food-container{
     align-items: center;
     width: 100%
@@ -264,13 +267,13 @@ canvas {
   .addcomment-textarea{
     width: 90%;
   }
-  .sweet-loading-two{
-    margin-right: 40px;
-  }
 }
 
 @media(max-width: 500px){
-.food-container{
+  .title > h1 {
+    display: none;
+  }
+  .food-container{
   align-items: center;
     width: 100%
   }
@@ -298,9 +301,6 @@ canvas {
   }
   .addcomment-textarea{
     width: 90%
-  }
-  .sweet-loading-two{
-    margin-right: 40px;
   }
 }
 @keyframes App-logo-spin {
