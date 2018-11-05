@@ -199,8 +199,8 @@ canvas {
     width: 100px;
     margin-top: 40%;
   }
-  .override{
-    width: 50%
+  .addcomment-textarea{
+    width: 90%
   }
 }
 
@@ -225,6 +225,9 @@ canvas {
   }
   .display-favorites{
     height: 150px;
+  }
+  .addcomment-textarea{
+    width: 90%;
   }
 }
 
@@ -251,6 +254,9 @@ canvas {
     height: 650px;
     width: 100px;
     margin-top: 15%;
+  }
+  .addcomment-textarea{
+    width: 90%;
   }
 }
 
