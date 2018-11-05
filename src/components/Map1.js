@@ -30,11 +30,14 @@ class Map1 extends Component{
         const {lat, lng, restaurant, address} = this.props
         const style = {
             width: '70%',
-            height: '50%',
-            marginTop: '5%',
-            marginLeft: '15%'
+            height: '70%',
+            marginTop: '15%',
+            marginLeft: '15%',
+            position: 'relative',
+            paddingBottom: '-200px'
         }
         return(
+            <div style={{height: '50px'}}>
         <Map
                 google={this.props.google}
                 style={style}
@@ -59,6 +62,7 @@ class Map1 extends Component{
                 </InfoWindow>
 
                  </Map>
+                 </div>
         )}
 }
 

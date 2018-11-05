@@ -70,8 +70,10 @@ class Restaurant extends Component{
                  <Map1 />
                 </div>
                 <div className='restaurant-addons'>
-                <button onClick={() => this.addFavorite(restaurant)}>Add To Favorites List</button>
-                <a href={'https://www.google.com/maps/place/'+ restaurant + '%20' + address + latitude + longitude}><button>Go To Restaurant</button></a>
+                <div>
+                <button onClick={() => this.addFavorite(restaurant)} id = 'favorites-btn'>Add To Favorites List</button>
+                <a href={'https://www.google.com/maps/place/'+ restaurant + '%20' + address + latitude + longitude}><button id = 'favorites-btn'>Go To Restaurant</button></a>
+                </div>
                 <h1>Comments About This Restaurant</h1>
                 <AddComment addComment={this.addComment}/>
                 <CommentContainer handleDeleteComment={this.handleDeleteComment} submitEdit= {this.submitEdit} comments={this.state.comments}/>
